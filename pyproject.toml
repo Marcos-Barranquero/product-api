@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "product-api"
+version = "0.1.0"
+description = ""
+authors = ["Marcos Barranquero <marcosbarranquero@outlook.es>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.104.1"
+pylint = "^3.0.2"
+uvicorn = "^0.24.0.post1"
+pytest = "^7.4.3"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11.0"
+httpx = "^0.25.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+start = "product_api.main:start"
+playground = "product_api.playground:playground"
