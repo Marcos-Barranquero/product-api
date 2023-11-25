@@ -29,9 +29,9 @@ The application will run on `localhost:5000`.
 
 ## OpenAPI and Interactive API documentation
 
-FastAPI automatically generates an OpenAPI schema for your API. This schema is available at the `/openapi.json` endpoint of your application. For example, if your application is running on `localhost:8000`, you can access the OpenAPI schema at `http://localhost:8000/openapi.json`. The OpenAPI schema is a machine-readable description of your API which can be used by various tools for documentation, code generation, or to facilitate client-side API integration.
+FastAPI automatically generates an OpenAPI schema for your API. This schema is available at the `/openapi.json` endpoint of your application. For example, if your application is running on `localhost:5000`, you can access the OpenAPI schema at `http://localhost:5000/openapi.json`. The OpenAPI schema is a machine-readable description of your API which can be used by various tools for documentation, code generation, or to facilitate client-side API integration.
 
-In addition to the OpenAPI schema, FastAPI also provides an interactive API documentation using Swagger UI. This is available at the `/docs` endpoint of your application, for example, `http://localhost:8000/docs`. This interactive documentation allows you to explore your API, see the expected request structure, make test requests, and view the responses, all from your browser.
+In addition to the OpenAPI schema, FastAPI also provides an interactive API documentation using Swagger UI. This is available at the `/docs` endpoint of your application, for example, `http://localhost:5000/docs`. This interactive documentation allows you to explore your API, see the expected request structure, make test requests, and view the responses, all from your browser.
 
 ## Contributing
 
