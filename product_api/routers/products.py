@@ -2,17 +2,32 @@ from typing import Optional
 
 from fastapi import APIRouter, HTTPException
 
+from redis import Redis
+
+import json
+
 from ..data.products import products
 from ..models.product import Product
 
 product_router = APIRouter()
 
+redis = Redis(host='redis', port=6379)
+
+products_for_cache: list[Product] = products
+
 
 @product_router.get("/products")
 def get_products() -> list[Product]:
-    return products
 
+    cached_products = redis.json().get('products')
 
+    if cached_products is None:
+        products_json = json.dumps([product.model_dump_json() for product in products])
+        redis.set('products', products_json)
+        return products
+    else:
+        product_dicts = json.loads(cached_products)
+        return [Product(**product_dict) for product_dict in product_dicts]
 
 
 @product_router.get("/products/{product_id}", response_model=Product)
