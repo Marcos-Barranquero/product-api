@@ -1,17 +1,26 @@
+from dataclasses import dataclass
+
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
-from .models.product import Product
-from .data.products import products
-
+from .routers.helloworld import helloworld_router
 # import product router
 from .routers.products import product_router
-from .routers.helloworld import helloworld_router
 
-from dataclasses import dataclass
+app = FastAPI(
+    title="Product API",
+    description="A simple API to demonstrate FastAPI",
+    version="0.0.1",
+    docs_url="/",
+)
 
-app = FastAPI()
+app.router.prefix = "/v1"
+
+app.router.default_response_class = JSONResponse
+
+
 
 app.add_middleware(
     CORSMiddleware,

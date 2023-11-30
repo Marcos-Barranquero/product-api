@@ -35,7 +35,7 @@ def create_product(product: Product) -> list[Product]:
 
 @product_router.put("/products/{product_id}")
 def update_product(product_id: int, product: Product) -> Product:
-    existing_product: Product | None = next((p for p in products if p.id == product_id), None)
+    existing_product = next((p for p in products if p.id == product_id), None)
 
     if existing_product is None:
         raise HTTPException(status_code=404, detail="Product not found")
@@ -50,7 +50,7 @@ def update_product(product_id: int, product: Product) -> Product:
 
 @product_router.delete("/products/{product_id}")
 def delete_product(product_id: int) -> dict[str, str]:
-    existing_product: Product | None = next((p for p in products if p.id == product_id), None)
+    existing_product = next((p for p in products if p.id == product_id), None)
 
     if existing_product is None:
         raise HTTPException(status_code=404, detail="Product not found")
