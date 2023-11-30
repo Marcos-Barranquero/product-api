@@ -1,7 +1,6 @@
-from dataclasses import dataclass
 
 import uvicorn
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -19,8 +18,6 @@ app = FastAPI(
 app.router.prefix = "/v1"
 
 app.router.default_response_class = JSONResponse
-
-
 
 app.add_middleware(
     CORSMiddleware,
